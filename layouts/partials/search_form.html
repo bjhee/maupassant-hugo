@@ -1,6 +1,19 @@
-<form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+<form id="search" action="https://www.baidu.com/s" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1" onsubmit="return buildQuery()">
       {{/** the keywords **/}}
-      <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="{{ .Site.BaseURL }}">
+      <input type="text" id="query" maxlength="20" placeholder="Search">
+      <input type="hidden" id="wd" name="wd" value="{{ .Site.BaseURL }}">
       <button type="submit" class="submit icon-search"></button>
 </form>
+
+<!-- Put the code of building Baidu query string here which can be easily maintained -->
+<script>
+    function buildQuery(){
+        var queryString= document.getElementById('query').value;
+        var wdElement = document.getElementById('wd');
+        // Remove the leading "https://" or "http://" or "//", and the "/" at the end.
+        var url = wdElement.value.replace(/^(https:|http:|)\/\//, "").replace(/\/$/, "");
+        wdElement.value= queryString + " site:" + url;  // Baidu query string: "<keyword> site:<domain>"
+        //进行下一步
+        return true;
+    }
+</script>
