@@ -42,8 +42,10 @@
 
                         {{ partial "copyright" .}}
 
-                        <!-- {{ partial "related" . }} -->
-
+                        {{ if .Params.related }}
+                          {{ partial "related" . }}
+                        {{ end }}
+                        
                         <div class="post-meta meta-tags">
                             {{ if and (isset .Params "tags") .Params.tags }}
                             <ul class="clearfix">
