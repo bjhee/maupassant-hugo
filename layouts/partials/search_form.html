@@ -1,7 +1,7 @@
 <form id="search" action="https://www.baidu.com/s" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1" onsubmit="return buildQuery()">
       {{/** the keywords **/}}
       <input type="text" id="query" maxlength="20" placeholder="Search">
-      <input type="hidden" id="wd" name="wd" value="{{ .Site.BaseURL }}">
+      <input type="hidden" id="wd" name="wd" value="">
       <button type="submit" class="submit icon-search"></button>
 </form>
 
@@ -9,11 +9,13 @@
 <script>
     function buildQuery(){
         var queryString= document.getElementById('query').value;
-        var wdElement = document.getElementById('wd');
+        var baseUrl = "{{ .Site.BaseURL }}";
         // Remove the leading "https://" or "http://" or "//", and the "/" at the end.
-        var url = wdElement.value.replace(/^(https:|http:|)\/\//, "").replace(/\/$/, "");
+        var url = baseUrl.replace(/^(https:|http:|)\/\//, "").replace(/\/$/, "");
+          
+        var wdElement = document.getElementById('wd');
         wdElement.value= queryString + " site:" + url;  // Baidu query string: "<keyword> site:<domain>"
-        //进行下一步
+        // Return true to move to next step
         return true;
     }
 </script>
