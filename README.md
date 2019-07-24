@@ -3,9 +3,9 @@ Maupassant theme, ported to Hugo.
 
 Fork from [rujews/maupassant-hugo](https://github.com/rujews/maupassant-hugo)
 
-## 附加功能
+## Additional Functions
 
-1. 将Google搜索改为百度搜索
-2. 页脚添加备案号，在config.toml（或config.yaml）的params项中添加 registerInfo="<备案号>"即可
-3. 添加[params]里的选型"related"，设为true则开启文章底部"See Also"功能，false则关闭
-
+1. Replace Google Search by Baidu Search
+2. Adding Register Info (aka 备案 in China) at footer.  You can add `registerInfo="<register_number>"` in `[params]` section of config.toml or config.yaml
+3. Add `related` option in `[params]`, enable "See Also" function when setting it to true, default is false
+3. Add `recentPostNumber` option in `[params]`, it can specify the number of links listed on "Recent Post" section of side bar, default is 10
