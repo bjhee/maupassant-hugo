@@ -6,7 +6,10 @@
     {{ end }}
     {{ range first $postNumber (where (where .Site.Pages "Type" "in" (slice "post" "posts")) "Kind" "page") }}
     <li>
-        <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+        <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a><br>
+        <date class="post-meta meta-date" style="text-align: right">
+           {{ .Date.Year }}年{{ printf "%d" .Date.Month }}月{{ .Date.Day }}日
+        </date>
     </li>
     {{ end }}
 </ul>
